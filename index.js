@@ -23,7 +23,7 @@ console.log(ilkiniDon(['as','sa'],function(met){return met+met}));
 // Başlangıç Challenge'ı Sonu
 
 
-///// M V P ///////
+///// M V P ////////
 
 /*Görev 1: macSkoru()
   

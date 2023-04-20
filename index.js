@@ -18,7 +18,7 @@
 function ilkiniDon(stringArray, callback) {
   return callback(stringArray[0])
 }
-console.log('örnek görev:', ilkiniDon(['as','sa'],function(metin){return metin+metin}));
+console.log(ilkiniDon(['as','sa'],function(met){return met+met}));
 
 // Başlangıç Challenge'ı Sonu
 
@@ -28,12 +28,21 @@ console.log('örnek görev:', ilkiniDon(['as','sa'],function(metin){return metin
 /*Görev 1: macSkoru()
   
   Aşağıdaki skor1 ve skor2 kodlarını inceleyiniz ve aşağıdaki soruları altına not alarak cevaplayın
-  
   1. skor1 ve skor2 arasındaki fark nedir?
-  
+  cevap 1. skor1, bir closure kullanarak bir fonksiyon döndürür ve bu fonksiyon her çağrıldığında skor değerini artırır
+   ve artırılmış skor değerini döndürür. skor2, global bir skor değişkeni kullanarak her çağrıldığında skor değerini 
+   artırır ve artırılmış skor değerini döndürür.
+
   2. Hangisi bir closure kullanmaktadır? Nasıl tarif edebilirsin? (yarınki derste öğreneceksin :) )
-  
+  cevap 2. skor1 bir closure kullanmaktadır. Bir closure, iç içe bir fonksiyonun, dıştaki fonksiyonun değişkenlerine erişebilmesi 
+  durumudur. Burada, skorGuncelle fonksiyonu skorArtirici fonksiyonunun değişkenine (skor) erişebilir, 
+  dolayısıyla bir closure kullanılır.
+
   3. Hangi durumda skor1 tercih edilebilir? Hangi durumda skor2 daha mantıklıdır?
+  cevap 3. skor1, birden çok skor artış fonksiyonu gerektiğinde tercih edilebilir çünkü her fonksiyon kendi bağımsız skor değerine
+   sahip olur. skor2, sadece bir skor artış fonksiyonu gerektiğinde daha mantıklıdır, çünkü tek bir skor değişkenine bağlıdır 
+   ve herhangi bir fonksiyonun skoru artırması diğer fonksiyonların etkilenmesine neden olabilir.
+
 */
 
 // skor1 kodları
@@ -63,13 +72,9 @@ Aşağıdaki takimSkoru() fonksiyonununda aşağıdakileri yapınız:
   
 Not: Bu fonskiyon, aşağıdaki diğer görevler için de bir callback fonksiyonu olarak da kullanılacak
 */
-
-function takimSkoru(/*Kodunuzu buraya yazınız*/){
-    /*Kodunuzu buraya yazınız*/
+function takimSkoru(){
+  return Math.floor(Math.random() * 15) + 10;
 }
-
-
-
 
 /* Görev 3: macSonucu() 
 Aşağıdaki macSonucu() fonksiyonununda aşağıdakileri yapınız:
@@ -86,10 +91,23 @@ Aşağıdaki macSonucu() fonksiyonununda aşağıdakileri yapınız:
 }
 */ 
 
-function macSonucu(/*Kodunuzu buraya yazınız*/){
-  /*Kodunuzu buraya yazınız*/
-}
+function macSonucu(takimSkoru, ceyrekSayisi){
+  var evSahibiSkoru = 0;
+  var konukTakimSkoru = 0;
 
+  for(var i = 0; i < ceyrekSayisi; i++){
+      var evSahibiCeyrekSkoru = takimSkoru();
+      var konukTakimCeyrekSkoru = takimSkoru();
+
+      evSahibiSkoru += evSahibiCeyrekSkoru;
+      konukTakimSkoru += konukTakimCeyrekSkoru;
+  }
+
+  return {
+      "EvSahibi": evSahibiSkoru,
+      "KonukTakim": konukTakimSkoru
+  };
+}
 
 
 
@@ -108,14 +126,20 @@ Aşağıdaki periyotSkoru() fonksiyonununda aşağıdakileri yapınız:
 }
   */
 
+function periyotSkoru(takimSkoru){
+  
+  var evSahibiSkoru = takimSkoru();
+  var konukTakimSkoru = takimSkoru();
 
-function periyotSkoru(/*Kodunuzu buraya yazınız*/) {
-  /*Kodunuzu buraya yazınız*/
-
+  return {
+      "EvSahibi": evSahibiSkoru,
+      "KonukTakim": konukTakimSkoru
+  };
 }
 
 
-/* Zorlayıcı Görev 5: skorTabelasi() 
+
+/*Zorlayıcı Görev 5: skorTabelasi() 
 Aşağıdaki skorTabelasi() fonksiyonunu kullanarak aşağıdakileri yapınız:
   1. İlk parametre olarak Görev 4'te oluşturduğumuz 'periyotSkoru'nu bir değişken olarak almalı
   2. İkinci parametre olarak Gröev 2'de oluşturduğumuz 'takimSkoru'nu bir değişken olarak almalı
@@ -146,7 +170,7 @@ MAÇ UZAR ise skorTabelasi(periyotSkoru,takimSkoru,4)
 ] */
 // NOTE: Bununla ilgili bir test yoktur. Eğer logladığınız sonuçlar yukarıdakine benziyor ise tmamlandı sayabilirsiniz.
 
-function skorTabelasi(/*Kodunuzu buraya yazınız*/) {
+function skorTabelasi(periyotSkoru, takimSkoru, ceyrekSayisi) {
   /*Kodunuzu buraya yazınız*/
 }
 

@@ -64,7 +64,7 @@ function skor2() {
 
 
 /* Görev 2: takimSkoru() 
-Aşağıdaki takimSkoru() fonksiyonununda aşağıdakileri yapınız:
+Aşağıdaki takimSkoru() fonksiyonununda aşağıdakileri yapın.ız:
   1. Bir çeyrekte bir takımın ürettiği skoru rastgele(random) elde eden bir sonuc dönünüz(return)
   
   Ön Bilgi: Bir çeyrekte takımlar ortalama 10 ile 25 sayı üretebiliyor
